@@ -18,5 +18,5 @@ jobs:
         path: ${{ env.DEVOPS_DIR }}
 
     - name: Hello World
-      run: python ${{ env.DEVOPS_DIR }}/hello world.py
+      run: python ${{ env.DEVOPS_DIR }}/hello.py
       shell: sh
