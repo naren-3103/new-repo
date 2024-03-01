@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check-out devops repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: jcdan3/devops
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.DEVOPS_DIR }}
 
     - name: Hello World
-      run: python ${{ env.DEVOPS_DIR }}/hello_world.py
+      run: python ${{ env.DEVOPS_DIR }}/hello world.py
       shell: sh
