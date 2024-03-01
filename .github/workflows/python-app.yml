@@ -13,7 +13,7 @@ jobs:
     - name: Check-out devops repository
       uses: actions/checkout@v3
       with:
-        repository: jcdan3/devops
+        repository: naren-3103/new-repo
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.DEVOPS_DIR }}
 
