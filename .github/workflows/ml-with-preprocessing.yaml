@@ -30,6 +30,8 @@ jobs:
 
       - name: Add Changes
         run: |
+          git config --global user.email "narenmouria.g@gmail.com"
+           git config --global user.name "Naren"
           git add .
           git commit -m "Add processed Excel file"
           git push -u origin test
