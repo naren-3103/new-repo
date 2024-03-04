@@ -32,11 +32,7 @@ jobs:
         run: |
           git add .
           git commit -m "Add processed Excel file"
-
-      - name: Push Changes
-        uses: ad-m/github-push-action@test
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
+          git push -u origin test
 
       - name: Run ML Program
         run: python titanic.py  # Replace 'your_ml_program.py' with your ML program filename
