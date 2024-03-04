@@ -1,0 +1,43 @@
+name: Python ML application
+
+on: push
+
+jobs:
+  run_preprocessing_and_ml:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+
+    - name: Install Jupyter
+      run: |
+        pip install jupyter
+
+    - name: Run Jupyter Notebook
+      run: |
+        jupyter nbconvert --to script preprocessing.ipynb  # Replace 'your_notebook.ipynb' with your notebook filename
+        python preprocessing.py  # Execute the generated Python script
+
+    - name: Install ML Dependencies
+      run: |
+        pip install -r ml_requirements.txt  # Install ML program dependencies
+        # Add any additional setup commands for your ML program
+
+    - name: Commit New Excel File
+      run: |
+        git config --local user.email "narenmouria.g@gmail.com"
+        git config --local user.name "narenmouria.g"
+        git add .  # Add the path to the new Excel file
+        git commit -m "Add processed Excel file"
+        git push -u origin test
+
+    - name: Run ML Program
+      run: python titanic.py  # Replace 'your_ml_program.py' with your ML program filename
+
+    
