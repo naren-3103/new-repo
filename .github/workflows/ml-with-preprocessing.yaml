@@ -19,6 +19,10 @@ jobs:
       run: |
         pip install jupyter
 
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt  # install your Python dependencies
+
     - name: Run Jupyter Notebook
       run: |
         jupyter nbconvert --to script preprocessing_titanic.ipynb  # Replace 'your_notebook.ipynb' with your notebook filename
