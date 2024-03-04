@@ -22,7 +22,7 @@ jobs:
     - name: Run Jupyter Notebook
       run: |
         jupyter nbconvert --to script preprocessing_titanic.ipynb  # Replace 'your_notebook.ipynb' with your notebook filename
-        python preprocessing.py  # Execute the generated Python script
+        python preprocessing_titanic.py  # Execute the generated Python script
 
     - name: Install ML Dependencies
       run: |
