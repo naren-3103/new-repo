@@ -4,7 +4,16 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # Load the Titanic dataset
-titanic_data = pd.read_excel(r"output.xlsx")
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/naren-3103/new-repo/test/output.xlsx"
+
+# Try reading the CSV file with different parameters
+try:
+    df = pd.read_excel(url)
+except pd.errors.ParserError as e:
+    print("Error:", e)
+
 
 # Feature selection
 features = ["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked"]
