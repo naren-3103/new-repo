@@ -3,6 +3,7 @@ name: Python ML application
 on: push
 
 jobs:
+
   run_preprocessing_and_ml:
     runs-on: ubuntu-latest
     steps:
