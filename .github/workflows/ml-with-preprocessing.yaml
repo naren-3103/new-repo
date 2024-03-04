@@ -28,13 +28,13 @@ jobs:
           jupyter nbconvert --to script preprocessing_titanic.ipynb  # Replace 'your_notebook.ipynb' with your notebook filename
           python preprocessing_titanic.py  # Execute the generated Python script
 
-      - name: Add Changes
-        run: |
-          git config --global user.email "narenmouria.g@gmail.com"
-           git config --global user.name "Naren"
-          git add output.xlsx
-          git commit -m "Add processed Excel file"
-          git push -u origin test
+      #- name: Add Changes
+      #  run: |
+      #    git config --global user.email "narenmouria.g@gmail.com"
+      #     git config --global user.name "Naren"
+      #    git add output.xlsx
+      #    git commit -m "Add processed Excel file"
+      #    git push -u origin test
 
       - name: Run ML Program
         run: python titanic.py  # Replace 'your_ml_program.py' with your ML program filename
