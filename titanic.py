@@ -10,7 +10,7 @@ url = "https://raw.githubusercontent.com/naren-3103/new-repo/test/output.xlsx"
 
 # Try reading the CSV file with different parameters
 try:
-    df = pd.read_excel(url)
+    titanic_data = pd.read_excel(url)
 except pd.errors.ParserError as e:
     print("Error:", e)
 
