@@ -1,44 +1,42 @@
 name: Python ML application
 
-on: push
+on: 
+  push:
 
 jobs:
-
   run_preprocessing_and_ml:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
 
-    - name: Install Jupyter
-      run: |
-        pip install jupyter
+      - name: Install Jupyter
+        run: |
+          pip install jupyter
 
-    - name: Install Dependencies
-      run: |
-        pip install -r requirements.txt  # install your Python dependencies
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt  # install your Python dependencies
 
-    - name: Run Jupyter Notebook
-      run: |
-        jupyter nbconvert --to script preprocessing_titanic.ipynb  # Replace 'your_notebook.ipynb' with your notebook filename
-        python preprocessing_titanic.py  # Execute the generated Python script
+      - name: Run Jupyter Notebook
+        run: |
+          jupyter nbconvert --to script preprocessing_titanic.ipynb  # Replace 'your_notebook.ipynb' with your notebook filename
+          python preprocessing_titanic.py  # Execute the generated Python script
 
-   - name: Add Changes
-      run: |
-        git add .
-        git commit -m "Add processed Excel file"
+      - name: Add Changes
+        run: |
+          git add .
+          git commit -m "Add processed Excel file"
 
-    - name: Push Changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GH_TOKEN }}
+      - name: Push Changes
+        uses: ad-m/github-push-action@test
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
 
-    - name: Run ML Program
-      run: python titanic.py  # Replace 'your_ml_program.py' with your ML program filename
-
-    
+      - name: Run ML Program
+        run: python titanic.py  # Replace 'your_ml_program.py' with your ML program filename
