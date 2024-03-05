@@ -4,8 +4,24 @@ on:
   push:
 
 jobs:
-
-  run_preprocessing_and_ml:
+   run_ml_program:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+  
+    - name: Run ML program
+      run: python mlp.py
+      
+   run_preprocessing:
+    needs : run_ml_program 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -36,6 +52,19 @@ jobs:
           git add output.xlsx
           git commit -m "Add processed Excel file"
           git push -u origin test
+
+   run_ml_after_prepocessing:
+     needs : run_preprocessing 
+     runs-on: ubuntu-latest
+     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+ 
 
       - name: Run ML Program
         run: python titanic.py  # Replace 'your_ml_program.py' with your ML program filename
